@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#09090b">
+  <meta name="author" content="Pablo Hernández Cobarro">
+  <meta name="description" content="Portfolio técnico de Pablo Hernández Cobarro: backend, ingeniería de datos y sistemas. Estudiante de 2.º DAM y disponible para prácticas FCT en marzo.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Pablo Hernández Cobarro — Data &amp; Software Systems Developer">
+  <meta property="og:description" content="Backend, data pipelines y sistemas contenerizados. Portfolio técnico y CV de Pablo Hernández Cobarro.">
+  <title>Pablo Hernández Cobarro — Data &amp; Software Systems Developer</title>
+
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTAiIGZpbGw9IiMwOTA5MGIiLz48dGV4dCB4PSIzMiIgeT0iNDIiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMjYiIGZpbGw9IiNmNGY0ZjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBIPC90ZXh0Pjwvc3ZnPg==">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#09090b',
+            panel: '#121215',
+            line: '#27272a',
+            fg: '#f4f4f5',
+            muted: '#a1a1aa',
+            accent: '#34d399'
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #09090b;
+      --panel: #121215;
+      --panel-soft: #0d0d10;
+      --line: #27272a;
+      --line-strong: #3f3f46;
+      --fg: #f4f4f5;
+      --muted: #a1a1aa;
+      --accent: #34d399;
+      --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5.5rem;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(52, 211, 153, 0.22);
+      color: #ffffff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 72rem;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    .hero-inner {
+      padding-top: 4.5rem;
+      padding-bottom: 5rem;
+    }
+
+    .section-inner {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card {
+      background-color: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 0.5rem;
+    }
+
+    .card-pad {
+      padding: 1.5rem;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      line-height: 1.4;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .icon-box {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      flex: none;
+      color: #d4d4d8;
+      background-color: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 0.375rem;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 0.375rem;
+      height: 0.375rem;
+      flex: none;
+      border-radius: 9999px;
+      background-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 0.25rem;
+      background-color: #0e0e11;
+      color: #d4d4d8;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      flex: none;
+      padding: 0.28rem 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 0.25rem;
+      background-color: #0e0e11;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 0.5625rem;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-chip--done {
+      color: #6ee7b7;
+      border-color: rgba(52, 211, 153, 0.24);
+      background-color: rgba(52, 211, 153, 0.06);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      height: 2.5rem;
+      padding-inline: 1rem;
+      border: 1px solid transparent;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      line-height: 1;
+      cursor: pointer;
+      transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+    }
+
+    .btn svg {
+      width: 1rem;
+      height: 1rem;
+      flex: none;
+    }
+
+    .btn-sm {
+      height: 2rem;
+      padding-inline: 0.75rem;
+      font-size: 0.6875rem;
+    }
+
+    .btn-primary {
+      background-color: var(--fg);
+      border-color: var(--fg);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background-color: #ffffff;
+      border-color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: var(--panel);
+      border-color: var(--line-strong);
+      color: var(--fg);
+    }
+
+    .btn-secondary:hover {
+      background-color: #18181b;
+      border-color: #52525b;
+    }
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(39, 39, 42, 0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(39, 39, 42, 0.45) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 65% at 50% 0%, #000 25%, transparent 75%);
+      mask-image: radial-gradient(ellipse 80% 65% at 50% 0%, #000 25%, transparent 75%);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .section-note {
+      max-width: 38ch;
+      text-align: right;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .project-card {
+      transition: border-color 180ms ease, background-color 180ms ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--line-strong);
+      background-color: #141418;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d4d4d8;
+      transition: color 160ms ease;
+    }
+
+    .project-link:hover {
+      color: #ffffff;
+    }
+
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #71717a;
+    }
+
+    .preview-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .preview-frame a {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 0.375rem;
+      background-color: #000000;
+    }
+
+    .contact-panel {
+      background: linear-gradient(135deg, #121215 0%, #0f0f12 100%);
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 0.5rem);
+      left: 50%;
+      z-index: 20;
+      padding: 0.35rem 0.55rem;
+      border-radius: 0.25rem;
+      background-color: var(--fg);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      line-height: 1.2;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(-50%) translateY(4px);
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .tooltip.is-visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      z-index: 100;
+      padding: 0.6rem 1rem;
+      border-radius: 0 0 0.375rem 0.375rem;
+      background-color: var(--fg);
+      color: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      transform: translateY(-120%);
+      transition: transform 150ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 640px) {
+      .shell {
+        padding-inline: 1.75rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-inner {
+        padding-top: 6rem;
+        padding-bottom: 6.5rem;
+      }
+
+      .section-inner {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+
+      .card-pad {
+        padding: 1.75rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.85rem;
+      }
+
+      .section-note {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Exportación a PDF / impresión */
+    @media print {
+      @page {
+        size: A4;
+        margin: 1.2cm;
+      }
+
+      html,
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 10pt;
+        line-height: 1.45;
+      }
+
+      body * {
+        color: #000000 !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        border-color: #9ca3af !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      .no-print,
+      header.no-print,
+      nav,
+      .tooltip,
+      #copy-feedback,
+      .decorative,
+      .hero-grid {
+        display: none !important;
+      }
+
+      .shell {
+        max-width: none !important;
+        padding-inline: 0 !important;
+      }
+
+      .hero-inner {
+        padding-block: 0 14pt !important;
+      }
+
+      .section-inner {
+        padding-block: 13pt !important;
+      }
+
+      .section,
+      footer {
+        border-color: #9ca3af !important;
+      }
+
+      .card,
+      .project-card {
+        background: #ffffff !important;
+        border: 1px solid #9ca3af !important;
+        border-radius: 0 !important;
+      }
+
+      .card-pad,
+      .project-body {
+        padding: 10pt !important;
+      }
+
+      .project-preview {
+        padding: 8pt !important;
+      }
+
+      .contact-panel {
+        padding: 14pt !important;
+        background: #ffffff !important;
+      }
+
+      .tag,
+      .status-chip,
+      .btn,
+      .icon-box {
+        background: #ffffff !important;
+        border: 1px solid #9ca3af !important;
+      }
+
+      .tag {
+        padding: 1.5pt 4pt !important;
+        font-size: 8pt !important;
+      }
+
+      .status-chip {
+        font-size: 7.5pt !important;
+      }
+
+      .btn {
+        height: auto !important;
+        padding: 4pt 8pt !important;
+        font-size: 9pt !important;
+      }
+
+      .status-dot {
+        width: 5px !important;
+        height: 5px !important;
+        background: #000000 !important;
+        box-shadow: none !important;
+      }
+
+      a {
+        color: #000000 !important;
+        text-decoration: none !important;
+      }
+
+      a[href^="mailto:"] {
+        text-decoration: underline !important;
+        text-underline-offset: 2px;
+      }
+
+      h1 {
+        font-size: 24pt !important;
+        line-height: 1.03 !important;
+        letter-spacing: -0.02em !important;
+      }
+
+      .hero-role {
+        font-size: 9pt !important;
+        letter-spacing: 0.05em !important;
+      }
+
+      .hero-role-sep {
+        display: none !important;
+      }
+
+      .hero-role-part {
+        display: block !important;
+        margin-top: 1.5pt !important;
+      }
+
+      h2 {
+        font-size: 15pt !important;
+        line-height: 1.2 !important;
+      }
+
+      h3 {
+        font-size: 11pt !important;
+        line-height: 1.3 !important;
+      }
+
+      p,
+      li,
+      dd,
+      dt {
+        orphans: 3;
+        widows: 3;
+      }
+
+      .hero-layout {
+        grid-template-columns: 1.55fr 0.85fr !important;
+        gap: 16pt !important;
+        align-items: start !important;
+      }
+
+      .focus-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8pt !important;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 9pt !important;
+      }
+
+      .stack-grid,
+      .education-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 9pt !important;
+      }
+
+      .project-wide {
+        grid-column: 1 / -1 !important;
+      }
+
+      .hotel-layout {
+        grid-template-columns: 1.2fr 0.8fr !important;
+        gap: 12pt !important;
+      }
+
+      .preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8pt !important;
+      }
+
+      section,
+      .project-card,
+      .card,
+      .focus-card,
+      .stack-card,
+      .education-card,
+      figure,
+      .contact-panel {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .print-page-break {
+        break-before: page !important;
+        page-break-before: always !important;
+      }
+
+      .preview-frame a {
+        background: #ffffff !important;
+      }
+
+      .preview-frame img {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      footer {
+        border-top: 1px solid #9ca3af !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-ink text-fg font-sans antialiased">
+  <a href="#perfil" class="skip-link no-print">Saltar al contenido principal</a>
+
+  <header class="no-print sticky top-0 z-50 border-b border-line bg-ink/85 backdrop-blur">
+    <div class="shell flex h-16 items-center justify-between gap-6">
+      <a href="#perfil" class="flex items-center gap-3" aria-label="Pablo Hernández Cobarro — inicio">
+        <span class="grid h-8 w-8 place-items-center rounded border border-line bg-panel font-mono text-[11px] font-semibold tracking-tight text-fg">PH</span>
+        <span class="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 sm:block">pablo.hernandez <span class="text-zinc-700">/</span> portfolio</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 font-mono text-[10px] uppercase tracking-[0.14em] text-muted md:flex" aria-label="Navegación principal">
+        <a href="#enfoque" class="transition-colors hover:text-fg">Enfoque</a>
+        <a href="#proyectos" class="transition-colors hover:text-fg">Proyectos</a>
+        <a href="#stack" class="transition-colors hover:text-fg">Stack</a>
+        <a href="#formacion" class="transition-colors hover:text-fg">Formación</a>
+        <a href="#contacto" class="rounded border border-line px-3 py-1.5 text-fg transition-colors hover:border-zinc-500">Contacto</a>
+      </nav>
+
+      <a href="#contacto" class="btn btn-secondary btn-sm md:hidden">Contacto</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO / PERFIL -->
+    <section id="perfil" class="relative overflow-hidden border-b border-line">
+      <div class="hero-grid" aria-hidden="true"></div>
+
+      <div class="shell hero-inner relative">
+        <div class="hero-layout grid items-start gap-10 lg:grid-cols-[minmax(0,1.45fr)_minmax(290px,0.75fr)] lg:gap-14">
+          <div>
+            <p class="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.14em] text-emerald-300">
+              <span class="status-dot"></span>
+              Disponible para FCT · Marzo
+            </p>
+
+            <h1 class="mt-6 text-[clamp(2.7rem,6.2vw,4.7rem)] font-semibold leading-[0.94] tracking-[-0.05em] text-white">
+              Pablo Hernández <span class="text-zinc-400">Cobarro</span>
+            </h1>
+
+            <p class="hero-role mt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-zinc-300 sm:text-[12px]">
+              <span>Data &amp; Software Systems Developer</span>
+              <span class="hero-role-sep mx-1 text-zinc-500">—</span>
+              <span class="hero-role-part">Estudiante de 2.º DAM</span>
+            </p>
+
+            <p class="mt-4 flex items-start gap-2 text-sm text-muted">
+              <i data-lucide="map-pin" class="mt-0.5 h-4 w-4 flex-none text-zinc-500" aria-hidden="true"></i>
+              <span>Madrid <span class="text-zinc-500">•</span> Abierto a Prácticas FCT (a partir de Marzo)</span>
+            </p>
+
+            <p class="mt-7 max-w-[60ch] text-[15px] leading-7 text-muted md:text-base md:leading-8">
+              Desarrollo software enfocado en pipelines de datos, backend de alto rendimiento y sistemas contenerizados. Combino fundamentos sólidos de ingeniería con flujos de desarrollo acelerados mediante agentes de IA.
+            </p>
+
+            <div class="no-print mt-9 flex flex-wrap items-center gap-3">
+              <a href="https://github.com/pblvx" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/>
+                </svg>
+                GitHub
+              </a>
+
+              <button type="button" onclick="window.print()" class="btn btn-secondary">
+                <i data-lucide="printer" class="h-4 w-4" aria-hidden="true"></i>
+                Descargar / Imprimir CV
+              </button>
+
+              <div class="relative">
+                <button type="button" id="copy-email" class="btn btn-secondary" aria-label="Copiar correo electrónico 23pablohdzz@gmail.com">
+                  <i data-lucide="copy" class="h-4 w-4" aria-hidden="true"></i>
+                  Copiar Email
+                </button>
+                <span id="copy-feedback" class="tooltip no-print" role="status" aria-live="polite">¡Copiado!</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="card hero-profile overflow-hidden" aria-label="Ficha profesional">
+            <div class="flex items-center justify-between gap-4 border-b border-line px-5 py-3.5">
+              <span class="eyebrow">Ficha profesional</span>
+              <span class="font-mono text-[10px] text-zinc-500">PROFILE/01</span>
+            </div>
+
+            <dl class="divide-y divide-line">
+              <div class="grid grid-cols-[86px_1fr] gap-3 px-5 py-3.5">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Rol</dt>
+                <dd class="text-[13px] leading-5 text-zinc-200">Backend &amp; Data Systems</dd>
+              </div>
+              <div class="grid grid-cols-[86px_1fr] gap-3 px-5 py-3.5">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Formación</dt>
+                <dd class="text-[13px] leading-5 text-zinc-200">2.º DAM · Prometeo FP / thePower</dd>
+              </div>
+              <div class="grid grid-cols-[86px_1fr] gap-3 px-5 py-3.5">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Stack</dt>
+                <dd class="text-[13px] leading-5 text-zinc-200">Python · Java 21 · Docker</dd>
+              </div>
+              <div class="grid grid-cols-[86px_1fr] gap-3 px-5 py-3.5">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Ubicación</dt>
+                <dd class="text-[13px] leading-5 text-zinc-200">Madrid, España</dd>
+              </div>
+              <div class="grid grid-cols-[86px_1fr] gap-3 px-5 py-3.5">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Disponibilidad</dt>
+                <dd class="text-[13px] leading-5 text-zinc-200">Marzo · Presencial / Híbrido / Remoto</dd>
+              </div>
+            </dl>
+
+            <div class="flex items-center gap-2.5 border-t border-line px-5 py-4">
+              <span class="status-dot"></span>
+              <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-emerald-300">Disponible · FCT / Junior</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÁREAS DE ENFOQUE -->
+    <section id="enfoque" class="section">
+      <div class="shell section-inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 — Enfoque</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">Áreas de enfoque técnico</h2>
+          </div>
+          <p class="section-note">Ingeniería aplicada de extremo a extremo: ejecución, datos e infraestructura con estándares de producción.</p>
+        </div>
+
+        <div class="focus-grid mt-10 grid gap-4 md:grid-cols-3">
+          <article class="card focus-card card-pad">
+            <div class="flex items-start justify-between gap-4">
+              <span class="icon-box">
+                <i data-lucide="server" class="h-5 w-5" aria-hidden="true"></i>
+              </span>
+              <span class="font-mono text-[10px] text-zinc-500">01</span>
+            </div>
+            <h3 class="mt-6 text-base font-semibold leading-snug text-zinc-100">Sistemas Backend &amp; Concurrencia</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">
+              Microservicios asíncronos y APIs de baja latencia con tipado estricto. WebSockets para streaming en tiempo real y serialización eficiente.
+            </p>
+          </article>
+
+          <article class="card focus-card card-pad">
+            <div class="flex items-start justify-between gap-4">
+              <span class="icon-box">
+                <i data-lucide="database" class="h-5 w-5" aria-hidden="true"></i>
+              </span>
+              <span class="font-mono text-[10px] text-zinc-500">02</span>
+            </div>
+            <h3 class="mt-6 text-base font-semibold leading-snug text-zinc-100">Ingeniería de Datos &amp; Pipelines</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">
+              Pipelines de extracción, validación estricta de esquemas (Pydantic v2) y consumo de datos estructurados/semiestructurados (Parquet, XML, JSON).
+            </p>
+          </article>
+
+          <article class="card focus-card card-pad">
+            <div class="flex items-start justify-between gap-4">
+              <span class="icon-box">
+                <i data-lucide="container" class="h-5 w-5" aria-hidden="true"></i>
+              </span>
+              <span class="font-mono text-[10px] text-zinc-500">03</span>
+            </div>
+            <h3 class="mt-6 text-base font-semibold leading-snug text-zinc-100">Estándares de Producción &amp; Tooling</h3>
+            <p class="mt-3 text-sm leading-6 text-muted">
+              Despliegues reproducibles con Docker, entornos Linux, pruebas unitarias automatizadas (Pytest) y arquitectura desacoplada orientada a objetos (Java 21).
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="section print-page-break">
+      <div class="shell section-inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 — Proyectos</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">Proyectos técnicos</h2>
+          </div>
+          <p class="section-note">Cuatro sistemas construidos con foco en latencia, consistencia de datos y operabilidad.</p>
+        </div>
+
+        <div class="projects-grid mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <!-- PROYECTO 1 -->
+          <article class="project-card card card-pad flex flex-col">
+            <div class="flex items-start justify-between gap-4">
+              <p class="eyebrow leading-5">Backend &amp; Telemetría en Tiempo Real</p>
+              <span class="font-mono text-[10px] text-zinc-500">P/01</span>
+            </div>
+
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-zinc-100 md:text-xl">Motor de Streaming F1 a 100 Hz y Simulación</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Ingesta de telemetría a 100 Hz y microservicio asíncrono de baja latencia.</p>
+
+            <dl class="mt-5 grid grid-cols-3 divide-x divide-line border-y border-line">
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Frecuencia</dt>
+                <dd class="mt-1 font-mono text-[13px] text-zinc-200">100 Hz</dd>
+              </div>
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Latencia</dt>
+                <dd class="mt-1 font-mono text-[13px] text-zinc-200">10 ms</dd>
+              </div>
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Tests</dt>
+                <dd class="mt-1 font-mono text-[13px] text-zinc-200">19/19</dd>
+              </div>
+            </dl>
+
+            <div class="mt-5 border-t border-line pt-4">
+              <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Ingeniería</p>
+              <p class="mt-2 text-[13px] leading-6 text-zinc-300">
+                WebSockets a 10 ms/paquete sin bloqueo de I/O. Ingesta Parquet con FastF1. Inferencia física ONNX Runtime en CPU (~0.04 ms/paso). 19/19 tests en Pytest y empaquetado Docker.
+              </p>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Python 3.12</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">WebSockets</span>
+              <span class="tag">ONNX Runtime</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Pytest</span>
+              <span class="tag">uv</span>
+            </div>
+
+            <div class="mt-auto pt-6">
+              <div class="flex items-center justify-between gap-4 border-t border-line pt-4">
+                <a href="https://github.com/pblvx/strada-core" target="_blank" rel="noopener noreferrer" class="project-link">
+                  Ver en GitHub
+                  <i data-lucide="arrow-up-right" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                </a>
+                <span class="font-mono text-[9px] uppercase tracking-[0.1em] text-zinc-500">Streaming</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROYECTO 2 -->
+          <article class="project-card card card-pad flex flex-col">
+            <div class="flex items-start justify-between gap-4">
+              <p class="eyebrow leading-5">Agent Tooling &amp; Microservicios</p>
+              <span class="font-mono text-[10px] text-zinc-500">P/02</span>
+            </div>
+
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-zinc-100 md:text-xl">Servidor Forense Digital (Estándar MCP)</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Herramientas de análisis forense visual expuestas bajo el estándar MCP de Anthropic.</p>
+
+            <dl class="mt-5 grid grid-cols-3 divide-x divide-line border-y border-line">
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Protocolo</dt>
+                <dd class="mt-1 font-mono text-[12px] text-zinc-200">MCP</dd>
+              </div>
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Aislamiento</dt>
+                <dd class="mt-1 font-mono text-[12px] text-zinc-200">Docker</dd>
+              </div>
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Consumo</dt>
+                <dd class="mt-1 font-mono text-[12px] text-zinc-200">LLMs</dd>
+              </div>
+            </dl>
+
+            <div class="mt-5 border-t border-line pt-4">
+              <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Ingeniería</p>
+              <p class="mt-2 text-[13px] leading-6 text-zinc-300">
+                Implementación del protocolo Model Context Protocol para llamadas a herramientas tipadas consumibles por LLMs. Detección de ruido y análisis de metadatos en imágenes. Empaquetado aislado en Docker.
+              </p>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Python</span>
+              <span class="tag">Model Context Protocol (MCP)</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Git</span>
+            </div>
+
+            <div class="mt-auto pt-6">
+              <div class="flex items-center justify-between gap-4 border-t border-line pt-4">
+                <span class="project-status">
+                  <i data-lucide="lock" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                  Repositorio privado
+                </span>
+                <span class="font-mono text-[9px] uppercase tracking-[0.1em] text-zinc-500">MCP</span>
+              </div>
+              <p class="mt-2 text-[10px] leading-4 text-zinc-500">Código no publicado por confidencialidad de datos corporativos.</p>
+            </div>
+          </article>
+
+          <!-- PROYECTO 3 -->
+          <article class="project-card card card-pad flex flex-col">
+            <div class="flex items-start justify-between gap-4">
+              <p class="eyebrow leading-5">Data Pipelines &amp; APIs</p>
+              <span class="font-mono text-[10px] text-zinc-500">P/03</span>
+            </div>
+
+            <h3 class="mt-4 text-lg font-semibold leading-snug text-zinc-100 md:text-xl">Pipeline Automatizado de Detección de Señales</h3>
+            <p class="mt-2 text-sm leading-6 text-muted">Ingesta no estructurada, tipado estricto y analítica en streaming.</p>
+
+            <dl class="mt-5 grid grid-cols-3 divide-x divide-line border-y border-line">
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Ingesta</dt>
+                <dd class="mt-1 font-mono text-[12px] text-zinc-200">Async</dd>
+              </div>
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Validación</dt>
+                <dd class="mt-1 font-mono text-[12px] text-zinc-200">Pydantic</dd>
+              </div>
+              <div class="px-2 py-2.5 text-center">
+                <dt class="font-mono text-[9px] uppercase tracking-[0.1em] text-muted">Visualización</dt>
+                <dd class="mt-1 font-mono text-[12px] text-zinc-200">Streamlit</dd>
+              </div>
+            </dl>
+
+            <div class="mt-5 border-t border-line pt-4">
+              <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Ingeniería</p>
+              <p class="mt-2 text-[13px] leading-6 text-zinc-300">
+                Ingesta asíncrona con rate limiting. Validación estricta con Pydantic v2 garantizando consistencia. Visualización en Streamlit y persistencia estructurada.
+              </p>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Python</span>
+              <span class="tag">Pydantic v2</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Polars</span>
+              <span class="tag">Gemini API</span>
+            </div>
+
+            <div class="mt-auto pt-6">
+              <div class="flex items-center justify-between gap-4 border-t border-line pt-4">
+                <a href="https://github.com/pblvx/signal-ai" target="_blank" rel="noopener noreferrer" class="project-link">
+                  Ver en GitHub
+                  <i data-lucide="arrow-up-right" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                </a>
+                <span class="font-mono text-[9px] uppercase tracking-[0.1em] text-zinc-500">Pipelines</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROYECTO 4 -->
+          <article class="project-card card project-wide overflow-hidden md:col-span-2 lg:col-span-3">
+            <div class="project-body p-6 md:p-8">
+              <div class="flex items-start justify-between gap-4">
+                <p class="eyebrow leading-5">Java 21 • Desktop Architecture • DOM XML</p>
+                <span class="font-mono text-[10px] text-zinc-500">P/04</span>
+              </div>
+
+              <div class="hotel-layout mt-4 grid gap-7 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
+                <div>
+                  <h3 class="text-xl font-semibold leading-snug text-zinc-100 md:text-2xl">Hotel Core Engine &amp; Desktop UI</h3>
+                  <p class="mt-2 text-sm leading-6 text-muted">Sistema de escritorio reactivo con persistencia y parsing XML vía W3C DOM.</p>
+
+                  <div class="mt-5 border-t border-line pt-4">
+                    <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-muted">Ingeniería</p>
+                    <p class="mt-2 text-[13px] leading-6 text-zinc-300">
+                      Arquitectura desacoplada MVC sobre JavaFX y FXML sin CSS externo. Ingesta jerárquica con parser nativo DocumentBuilder (DOM) desde reservas.xml. Normalización estricta de estados, validación tipada de búsquedas y enlace reactivo a TableView con ObservableList y foco sincronizado.
+                    </p>
+                  </div>
+
+                  <div class="mt-5 flex flex-wrap gap-1.5">
+                    <span class="tag">Java 21</span>
+                    <span class="tag">JavaFX</span>
+                    <span class="tag">FXML</span>
+                    <span class="tag">W3C DOM XML</span>
+                    <span class="tag">Maven</span>
+                  </div>
+
+                  <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+                    <a href="https://github.com/pblvx/hotelapp-javafx-dom/blob/main/README.md" target="_blank" rel="noopener noreferrer" class="project-link">
+                      Documentación técnica
+                      <i data-lucide="arrow-up-right" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://github.com/pblvx/hotelapp-javafx-dom" target="_blank" rel="noopener noreferrer" class="project-link">
+                      Repositorio en GitHub
+                      <i data-lucide="arrow-up-right" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                    </a>
+                    <a href="#vista-previa" class="project-link">
+                      Ver vista previa
+                      <i data-lucide="arrow-right" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="rounded-md border border-line bg-[#0d0d10] p-5">
+                  <p class="eyebrow">Capas del sistema</p>
+                  <ul class="mt-4 divide-y divide-line">
+                    <li class="flex gap-3 py-2.5">
+                      <span class="font-mono text-[10px] text-zinc-500">01</span>
+                      <div>
+                        <p class="font-mono text-[11px] text-zinc-200">Main.java</p>
+                        <p class="mt-0.5 text-xs leading-5 text-muted">Ciclo de vida JavaFX y carga de FXML.</p>
+                      </div>
+                    </li>
+                    <li class="flex gap-3 py-2.5">
+                      <span class="font-mono text-[10px] text-zinc-500">02</span>
+                      <div>
+                        <p class="font-mono text-[11px] text-zinc-200">Controlador.java</p>
+                        <p class="mt-0.5 text-xs leading-5 text-muted">Eventos, DOM, validación y selección.</p>
+                      </div>
+                    </li>
+                    <li class="flex gap-3 py-2.5">
+                      <span class="font-mono text-[10px] text-zinc-500">03</span>
+                      <div>
+                        <p class="font-mono text-[11px] text-zinc-200">Habitacion.java</p>
+                        <p class="mt-0.5 text-xs leading-5 text-muted">Modelo inmutable y normalización de estados.</p>
+                      </div>
+                    </li>
+                    <li class="flex gap-3 py-2.5">
+                      <span class="font-mono text-[10px] text-zinc-500">04</span>
+                      <div>
+                        <p class="font-mono text-[11px] text-zinc-200">reservas.xml</p>
+                        <p class="mt-0.5 text-xs leading-5 text-muted">Inventario de 28 habitaciones.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div id="vista-previa" class="project-preview border-t border-line bg-[#0d0d10] p-4 md:p-6">
+              <div class="mb-4 flex flex-wrap items-center justify-between gap-2">
+                <p class="eyebrow">Vista previa · pruebas funcionales</p>
+                <span class="font-mono text-[9px] tracking-[0.04em] text-zinc-500">assets/img/hotelapp</span>
+              </div>
+
+              <div class="preview-grid grid gap-4 sm:grid-cols-2">
+                <figure class="preview-frame">
+                  <a href="assets/img/hotelapp/interfaz_disponible.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura completa de la validación de disponibilidad">
+                    <img src="assets/img/hotelapp/interfaz_disponible.png" width="900" height="700" alt="Interfaz de HotelApp mostrando la búsqueda de la habitación 101 con el resultado Disponible en verde y la fila seleccionada" decoding="async">
+                  </a>
+                  <figcaption class="mt-2.5 flex gap-2 text-xs leading-5 text-muted">
+                    <span class="font-mono text-[10px] text-zinc-500">01</span>
+                    <span>Validación de disponibilidad en tiempo real</span>
+                  </figcaption>
+                </figure>
+
+                <figure class="preview-frame">
+                  <a href="assets/img/hotelapp/interfaz_no_existe.png" target="_blank" rel="noopener noreferrer" aria-label="Abrir captura completa del control de excepciones por ID inexistente">
+                    <img src="assets/img/hotelapp/interfaz_no_existe.png" width="900" height="700" alt="Interfaz de HotelApp mostrando la búsqueda de la habitación 999 con el mensaje de error La habitación 999 no existe" decoding="async">
+                  </a>
+                  <figcaption class="mt-2.5 flex gap-2 text-xs leading-5 text-muted">
+                    <span class="font-mono text-[10px] text-zinc-500">02</span>
+                    <span>Control de excepciones por ID inexistente</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="section">
+      <div class="shell section-inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 — Stack</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">Stack tecnológico</h2>
+          </div>
+          <p class="section-note">Organizado por responsabilidad operativa: ejecución, datos, infraestructura y fundamentos.</p>
+        </div>
+
+        <div class="stack-grid mt-10 grid gap-4 sm:grid-cols-2">
+          <article class="card stack-card card-pad">
+            <div class="flex items-center gap-3">
+              <span class="icon-box h-9 w-9">
+                <i data-lucide="server" class="h-4 w-4" aria-hidden="true"></i>
+              </span>
+              <h3 class="text-sm font-semibold text-zinc-100">Backend &amp; Concurrencia</h3>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">FastAPI</span>
+              <span class="tag">WebSockets</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">AsyncIO</span>
+            </div>
+          </article>
+
+          <article class="card stack-card card-pad">
+            <div class="flex items-center gap-3">
+              <span class="icon-box h-9 w-9">
+                <i data-lucide="database" class="h-4 w-4" aria-hidden="true"></i>
+              </span>
+              <h3 class="text-sm font-semibold text-zinc-100">Datos &amp; Formatos</h3>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Apache Parquet</span>
+              <span class="tag">Pydantic v2</span>
+              <span class="tag">Parsing XML DOM</span>
+              <span class="tag">Polars</span>
+              <span class="tag">SQL</span>
+            </div>
+          </article>
+
+          <article class="card stack-card card-pad">
+            <div class="flex items-center gap-3">
+              <span class="icon-box h-9 w-9">
+                <i data-lucide="terminal" class="h-4 w-4" aria-hidden="true"></i>
+              </span>
+              <h3 class="text-sm font-semibold text-zinc-100">Sistemas &amp; DevOps</h3>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Docker</span>
+              <span class="tag">Docker Compose</span>
+              <span class="tag">Git</span>
+              <span class="tag">Linux (Bash)</span>
+              <span class="tag">uv</span>
+              <span class="tag">Maven</span>
+            </div>
+          </article>
+
+          <article class="card stack-card card-pad">
+            <div class="flex items-center gap-3">
+              <span class="icon-box h-9 w-9">
+                <i data-lucide="code-2" class="h-4 w-4" aria-hidden="true"></i>
+              </span>
+              <h3 class="text-sm font-semibold text-zinc-100">Fundamentos &amp; Lenguajes</h3>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Java 21</span>
+              <span class="tag">POO · MVC · JavaFX</span>
+              <span class="tag">Python 3.12</span>
+              <span class="tag">C (bases de memoria)</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMACIÓN -->
+    <section id="formacion" class="section">
+      <div class="shell section-inner">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 — Formación</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">Formación y certificaciones</h2>
+          </div>
+          <p class="section-note">Base de ingeniería de software complementada con especialización en datos y cloud.</p>
+        </div>
+
+        <div class="education-grid mt-10 grid gap-5 md:grid-cols-2">
+          <article class="card education-card card-pad">
+            <div class="flex items-start justify-between gap-4">
+              <span class="icon-box">
+                <i data-lucide="graduation-cap" class="h-5 w-5" aria-hidden="true"></i>
+              </span>
+              <span class="status-chip">En curso</span>
+            </div>
+
+            <h3 class="mt-6 text-lg font-semibold leading-snug text-zinc-100">Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</h3>
+            <p class="mt-1.5 text-sm text-muted">Prometeo FP / thePower</p>
+            <p class="mt-5 text-sm leading-6 text-muted">
+              2.º curso. Formación en programación orientada a objetos, acceso a datos, desarrollo de interfaces y despliegue de aplicaciones multiplataforma.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="tag">Java 21</span>
+              <span class="tag">JavaFX</span>
+              <span class="tag">SQL</span>
+              <span class="tag">XML</span>
+              <span class="tag">POO</span>
+            </div>
+          </article>
+
+          <article class="card education-card card-pad">
+            <div class="flex items-start justify-between gap-4">
+              <span class="icon-box">
+                <i data-lucide="workflow" class="h-5 w-5" aria-hidden="true"></i>
+              </span>
+              <span class="status-chip">Especialización</span>
+            </div>
+
+            <h3 class="mt-6 text-lg font-semibold leading-snug text-zinc-100">Especialización en Ingeniería de Datos</h3>
+            <p class="mt-1.5 text-sm text-muted">DeepLearning.AI &amp; AWS</p>
+
+            <ul class="mt-5 divide-y divide-line border-y border-line">
+              <li class="flex items-center gap-3 py-3">
+                <span class="grid h-6 w-6 flex-none place-items-center rounded border border-emerald-400/20 bg-emerald-400/5 text-emerald-300">
+                  <i data-lucide="check" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                </span>
+                <span class="flex-1 text-[13px] leading-5 text-zinc-200">Introduction to Data Engineering</span>
+                <span class="status-chip status-chip--done">Completado</span>
+              </li>
+              <li class="flex items-center gap-3 py-3">
+                <span class="grid h-6 w-6 flex-none place-items-center rounded border border-line bg-[#0e0e11] text-zinc-400">
+                  <i data-lucide="clock" class="h-3.5 w-3.5" aria-hidden="true"></i>
+                </span>
+                <span class="flex-1 text-[13px] leading-5 text-zinc-200">Data Engineering Professional Certificate</span>
+                <span class="status-chip">En curso</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="shell section-inner">
+        <div class="card contact-panel relative overflow-hidden p-7 md:p-12">
+          <div class="decorative pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-emerald-400/5 blur-3xl" aria-hidden="true"></div>
+
+          <div class="relative">
+            <p class="eyebrow">05 — Contacto</p>
+            <h2 class="mt-4 max-w-3xl text-[clamp(1.8rem,4vw,2.6rem)] font-semibold leading-tight tracking-tight text-white">
+              ¿Buscando un perfil para prácticas de FCT o Junior Backend / Data?
+            </h2>
+            <p class="mt-5 max-w-2xl text-[15px] leading-7 text-muted">
+              Disponibilidad de incorporación en marzo. Modalidad presencial o híbrida en Madrid / Remoto.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a href="mailto:23pablohdzz@gmail.com" class="btn btn-primary">
+                <i data-lucide="mail" class="h-4 w-4" aria-hidden="true"></i>
+                Enviar Correo
+              </a>
+              <a href="https://github.com/pblvx" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true">
+                  <path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/>
+                </svg>
+                Perfil de GitHub
+              </a>
+            </div>
+
+            <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+              <a href="mailto:23pablohdzz@gmail.com" class="transition-colors hover:text-zinc-300">23pablohdzz@gmail.com</a>
+              <span class="hidden text-zinc-700 sm:inline">/</span>
+              <a href="https://github.com/pblvx" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-zinc-300">github.com/pblvx</a>
+              <span class="hidden text-zinc-700 sm:inline">/</span>
+              <span>Madrid, España</span>
+              <span class="hidden text-zinc-700 sm:inline">/</span>
+              <span>FCT · Junior · Marzo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell flex flex-col gap-3 py-7 sm:flex-row sm:items-center sm:justify-between">
+      <p class="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-500">© <span id="year">2026</span> Pablo Hernández Cobarro</p>
+      <p class="text-xs text-zinc-500">Diseñado para pantalla y exportación a PDF · A4</p>
+      <div class="no-print flex items-center gap-4 font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-500">
+        <a href="https://github.com/pblvx" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-zinc-300">GitHub</a>
+        <a href="mailto:23pablohdzz@gmail.com" class="transition-colors hover:text-zinc-300">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>lucide.createIcons();</script>
+  <script>
+    (() => {
+      const EMAIL = '23pablohdzz@gmail.com';
+      const copyButton = document.getElementById('copy-email');
+      const copyFeedback = document.getElementById('copy-feedback');
+      const year = document.getElementById('year');
+      let feedbackTimer;
+
+      if (year) {
+        year.textContent = new Date().getFullYear();
+      }
+
+      const showFeedback = (message) => {
+        if (!copyFeedback) return;
+        copyFeedback.textContent = message;
+        copyFeedback.classList.add('is-visible');
+        window.clearTimeout(feedbackTimer);
+        feedbackTimer = window.setTimeout(() => {
+          copyFeedback.classList.remove('is-visible');
+        }, 2000);
+      };
+
+      const fallbackCopy = (text) => {
+        const field = document.createElement('textarea');
+        field.value = text;
+        field.setAttribute('readonly', '');
+        field.style.position = 'fixed';
+        field.style.top = '0';
+        field.style.left = '-9999px';
+        document.body.appendChild(field);
+        field.select();
+        field.setSelectionRange(0, field.value.length);
+        let copied = false;
+        try {
+          copied = document.execCommand('copy');
+        } catch (error) {
+          copied = false;
+        }
+        field.remove();
+        return copied;
+      };
+
+      if (copyButton && copyFeedback) {
+        copyButton.addEventListener('click', async () => {
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(EMAIL);
+            } else if (!fallbackCopy(EMAIL)) {
+              throw new Error('copy-unavailable');
+            }
+            showFeedback('¡Copiado!');
+          } catch (error) {
+            if (fallbackCopy(EMAIL)) {
+              showFeedback('¡Copiado!');
+            } else {
+              showFeedback('Copia manual: ' + EMAIL);
+            }
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Proyecto interno de HotelApp: no forma parte del portfolio público
+/HotelApp/
+
+# Archivos del sistema y del editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
